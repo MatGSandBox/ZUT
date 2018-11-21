@@ -12,11 +12,12 @@ void Task13();
 
 int main()
 {
-
+	setlocale(LC_ALL, "");
 
 
 	Task11();
 	Task12();
+	Task13();
 
 	char znak;
 
@@ -40,5 +41,10 @@ void Task12()
 
 void Task13()
 {
+	int liczba;
 
+	printf("1.3 - Podaj liczbê: ");
+	scanf_s("%d", &liczba);
+
+	printf("Kwadrat liczby %d = %d",liczba, liczba*liczba);
 }

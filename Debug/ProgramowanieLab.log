@@ -1,4 +1,3 @@
-﻿  stdafx.cpp
-  ProgramowanieLab.cpp
-  Generating Code...
+﻿  ProgramowanieLab.cpp
+d:\studia\programowanielab\programowanielab\programowanielab.cpp(30): warning C4305: 'initializing' : truncation from 'double' to 'float'
   ProgramowanieLab.vcxproj -> D:\Studia\ProgramowanieLab\Debug\ProgramowanieLab.exe

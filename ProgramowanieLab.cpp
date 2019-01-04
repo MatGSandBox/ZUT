@@ -2,10 +2,15 @@
 #include <iostream>
 #include <stdio.h>
 #include <cstdio>
+#include <ctype.h>
+//#include <string>
+#include <stdlib.h>
 
 using namespace std;
 
 int i = 0;
+
+#pragma region Listopad
 
 
 void Task11();
@@ -37,12 +42,57 @@ int WriteBiggerNumber(int x, int y);
 void Task34();
 int Multiply(int x, int y);
 
+#pragma endregion END Listopad
+
+#pragma region Grudzieñ
+
+
+void G_Task11(int *tab, int tab_size, bool DoG_Task11);
+void printTable(int *tab, int tab_size);
+void printTable(int *tab, int tab_size, bool startFromZero);
+int MaxValue(int *tab, int tab_size);
+void G_Task12();
+void G_Task13();
+bool IsTableSortedASC(int *tab, int tab_size);
+
+void G_Task21();
+void G_Task22();
+void G_Task23();
+void G_Task24();
+void G_Task25();
+void SortTable(int *tab, int tab_size, bool DESC);
+
+
+void G_Task31();
+int getLength(char *text);
+void G_Task32();
+void Reverse(char *text);
+void G_Task33();
+bool containDigit(char *text);
+void G_Task34();
+
+void G_Task41();
+void G_Task42();
+void G_Task43();
+bool AreArraysIdentical(int *tab1, int tab1_size, int*tab2, int tab2_size);
+int* CreateArray(int tab_size);
+
+void G_Task44();
+char* ReverseString(char *text);
+
+void PrintDot(int *tab, int tab_size);
+int Sum(int *tab, int tab_size);
+
+#pragma endregion END Grudzieñ
+
+// Grudzieñ
+
 
 int main()
 {
 	setlocale(LC_ALL, "");
 
-
+	//Listopad
 	/*Task11();
 	Task12();
 	Task13();
@@ -65,6 +115,27 @@ int main()
 	Task32();
 	Task33();
 	Task34();*/
+
+
+	//Grudzieñ
+	//int tab[5];
+	//G_Task11(tab,5,true);
+	//G_Task12();
+	//G_Task13();
+	//G_Task21();
+	//G_Task22();
+	//G_Task23();
+	//G_Task24();
+	//G_Task25();
+	//G_Task31();
+	//G_Task32();
+	//G_Task33();
+	//G_Task34();
+	//G_Task41();
+	//G_Task42();
+	//G_Task43();
+	G_Task44();
+
 
 	char znak;
 	scanf_s(" %c", &znak);
@@ -157,9 +228,9 @@ void Task16()
 	char operand;
 
 
-	
 
-	scanf( " %c", &operand);
+
+	scanf(" %c", &operand);
 	printf("Znak: %c\n", operand);
 
 
@@ -169,35 +240,35 @@ void Task16()
 
 	float secondNumber;
 	scanf_s(" %f", &secondNumber);
-	
-	
+
+
 
 	switch (operand)
 	{
-	case '+': 
-		
+	case '+':
+
 		printf_s("Dodawanie: %d + %d = %d\n", static_cast<int>(firstNumber), static_cast<int>(secondNumber), static_cast<int>(firstNumber + secondNumber));
 
 		break;
-	case '-': 
-		
+	case '-':
+
 		printf_s("Odejmowanie: %d - %d = %d\n", static_cast<int>(firstNumber), static_cast<int>(secondNumber), static_cast<int>(firstNumber - secondNumber));
 
 		break;
-	case '*': 
-		
+	case '*':
+
 		printf_s("Mno¿enie: %d * %d = %d\n", static_cast<int>(firstNumber), static_cast<int>(secondNumber), static_cast<int>(firstNumber * secondNumber));
 
 		break;
-	case '/': 
-		
-		
+	case '/':
+
+
 		printf_s("Dzielenie: %d / %d = %f\n", static_cast<int>(firstNumber), static_cast<int>(secondNumber), firstNumber / secondNumber);
 
 		break;
 
 	default:
-		
+
 		printf("Poda³eœ nieodpowiedni operator dzia³ania. Spróbuj jeszcze raz\n");
 		break;
 	}
@@ -224,7 +295,7 @@ void Task21()
 			printf("Liczba: %d \n", Usernumber);
 		}
 	}
-	
+
 
 }
 
@@ -244,22 +315,22 @@ void Task22()
 
 
 	scanf(" %c", &c);
-		
+
 
 	switch (c)
 	{
-	case 'y': 
+	case 'y':
 
 		system("CLS");
 		Task22();
 		break;
-	case 'n': 
+	case 'n':
 		break;
 	default:
 		printf("nie");
 		break;
 	}
-	
+
 
 }
 
@@ -270,15 +341,15 @@ void Task23()
 {
 	printf("2.3 - Podaj liczbê\n");
 	int number;
-	scanf_s(" %d",&number);
+	scanf_s(" %d", &number);
 
 
 	while (number < 100000.0)
 	{
-		
+
 		printf("%d\n", number *= 2);
-	
-		
+
+
 	}
 }
 
@@ -298,9 +369,9 @@ void Task24()
 	while (number > 0)
 	{
 		printf("%d\n", number--);
-		
 
-		
+
+
 	}
 }
 
@@ -319,7 +390,7 @@ void Task25()
 	}
 	else
 	{
-		while (number<=40.0)
+		while (number <= 40.0)
 		{
 			if (number == 40.0)
 			{
@@ -332,36 +403,36 @@ void Task25()
 				{
 					number++;
 					continue;
-					
+
 				}
 				else
 				{
 					printf("%d\n", number++);
 				}
-				
+
 			}
-			
+
 		}
-/*
-		for (number; number <= 40;number++)
-		{
-			if (number == 40.0)
-			{
+		/*
+				for (number; number <= 40;number++)
+				{
+				if (number == 40.0)
+				{
 				printf("%d\n", number);
 				return;
-			}
-			else
-			{
-				if (number % 2 > 0.0)
-				{
-					continue;
 				}
 				else
 				{
-					printf("%d\n",number);
+				if (number % 2 > 0.0)
+				{
+				continue;
 				}
-			}
-		}*/
+				else
+				{
+				printf("%d\n",number);
+				}
+				}
+				}*/
 	}
 }
 
@@ -375,7 +446,7 @@ void Task25()
 void Task26()
 {
 	printf("2.6 - For\n");
-	for (int i =0; i < 10; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		printf("%d\n", i);
 	}
@@ -411,7 +482,7 @@ void Task28()
 	scanf_s(" %d", &number);
 
 
-	for (int i = number-1; i >0; i--)
+	for (int i = number - 1; i > 0; i--)
 	{
 		printf("%d\n", i);
 	}
@@ -426,7 +497,7 @@ void Task29()
 	printf("podaj liczbê:\n");
 	int number;
 	scanf_s(" %d", &number);
-	for (int i = number; i <=100; i +=3)
+	for (int i = number; i <= 100; i += 3)
 	{
 		printf("%d\n", i);
 	}
@@ -458,7 +529,7 @@ void NewLines(int count)
 	{
 		printf("\n");
 	}
-	
+
 }
 
 
@@ -504,3 +575,533 @@ int Multiply(int x, int y)
 {
 	return x*y;
 }
+
+
+//1.1. Utworzyæ 5-cio elementow¹ tablicê typu int. Pobraæ od u¿ytkownika 5 elementów i dodaæ je do tablicy. Nastêpnie wyœwietliæ najwiêksz¹ liczbê z tablicy(algorytm do samodzielnej implementacji).
+void G_Task11(int *tab, int tab_size, bool DoG_Task11)
+{
+	printf("Grudzieñ 1.1 - \n");
+
+
+
+	int i = 0;
+	do
+	{
+		printf("podaj liczbê:\n");
+		scanf_s(" %d", &tab[i]);
+		i++;
+	} while (i < tab_size);
+
+	if (DoG_Task11)
+	{
+		printTable(tab, tab_size);
+		int maxValue = MaxValue(tab, tab_size);
+		printf("Liczba najwiêksza: %d: \n", maxValue);
+	}
+
+
+}
+
+///Metoda wyœwietla liczby od pocz¹tku
+void printTable(int *tab, int tab_size)
+{
+	int i = 0;
+	do
+	{
+		printf("Liczby: %d\n", tab[i]);
+		i++;
+	} while (i < tab_size);
+}
+///Metoda wyœwietla liczby z tablicy od pocz¹tku i od koñca
+void printTable(int *tab, int tab_size, bool startFromZero)
+{
+	int i = 0;
+	do
+	{
+		if (startFromZero)
+		{
+			printf("Liczby: %d\n", tab[i]);
+		}
+		else
+
+		{
+			printf("Liczby: %d\n", tab[tab_size - i - 1]);
+		}
+
+		i++;
+	} while (i < tab_size);
+
+}
+
+///Metoda zwraca najwiêksza liczbê
+int MaxValue(int *tab, int tab_size)
+{
+	int maxValue = 0;
+	for (int i = 0; i < tab_size; i++)
+	{
+		if (tab[i] > maxValue)
+		{
+			maxValue = tab[i];
+		}
+	}
+	return maxValue;
+
+}
+
+
+///1.2.Wyœwietliæ w pêtli tablice z zadania 1.1 od pocz¹tku i od koñca(dwie pêtle)
+void G_Task12()
+{
+	printf("Grudzieñ 1.2 - \n");
+
+	int tab[5];
+
+	int tab_size = 5;
+	G_Task11(tab, tab_size, false);
+	printTable(tab, tab_size, true);
+	printTable(tab, tab_size, false);
+
+}
+
+///1.3 Napisaæ algorytm sprawdzaj¹cy, czy tablica jest posortowana w kolejnoœci niemalej¹cej
+void G_Task13()
+{
+	printf("Grudzieñ 1.3 - \n");
+
+	int tab[5];
+
+	int tab_size = 5;
+	G_Task11(tab, tab_size, false);
+	bool result = IsTableSortedASC(tab, tab_size);
+	printf("Sprawdzenie czy tablica jest posortowania rosn¹co: %s", result ? "true" : "false");
+}
+
+///Metoda zwraca true/false, sprawdza czy tablica jest posortowania niemalej¹co
+bool IsTableSortedASC(int *tab, int tab_size)
+{
+	int value = 0;
+	bool IsSortedCorrect = true;
+	for (int i = 0; i < tab_size; i++)
+	{
+		if (value <= tab[i])
+		{
+			value = tab[i];
+			IsSortedCorrect = true;
+		}
+		else
+		{
+			return false;
+		}
+
+	}
+	return IsSortedCorrect;
+}
+
+//2.1. Utworzyæ osobn¹ metodê bool IsSorted(int *, int) realizuj¹c¹ zadanie 1.3 (UWAGA - w jêzyku C niedostêpny jest typ bool z wartoœciami true i false, zamiast niego nale¿y u¿yæ int i wartoœci 1 i 0)
+void G_Task21()
+{
+	printf("Grudzieñ 2.1 - \n");
+
+	int tab[5];
+
+	int tab_size = 5;
+	G_Task11(tab, tab_size, false);
+	bool result = IsTableSortedASC(tab, tab_size);
+	printf("Sprawdzenie czy tablica jest posortowania rosn¹co: %s", result ? "true" : "false");
+}
+
+//2.2.Utworzyæ metodê void printBackwards(int *a, int s) s³u¿¹c¹ do wypisania tablicy OD KOÑCA
+void G_Task22()
+{
+	printf("Grudzieñ 2.2 - \n");
+
+	int tab[5];
+
+	int tab_size = 5;
+	G_Task11(tab, tab_size, false);
+	printTable(tab, tab_size, false);
+}
+
+//2.3 Utworzyæ metodê printDots(int *a, int s) wyœwietlaj¹c¹ w nowych liniach tyle kropek, ile znajduje siê w danym elemencie tablicy.
+void G_Task23()
+{
+	printf("Grudzieñ 2.3 - \n");
+	int tab_size = 5;
+	int tab[] = { 5, 8, 6, 2, 7 };
+	PrintDot(tab, tab_size);
+
+}
+
+//2.4.Utworzyæ metodê int Sum(int *a, int s) licz¹c¹ sumê elementów tablicy.
+void G_Task24()
+{
+	printf("Grudzieñ 2.4 - \n");
+	int tab_size = 5;
+	int tab[] = { 5, 8, 6, 2, 7 };
+	int suma = Sum(tab, tab_size);
+	printTable(tab, tab_size);
+	printf("Suma: %d", suma);
+
+}
+
+//2.5. Zaimplementowaæ algorytm sortowania b¹belkowego (w funkcji main(), nie ma potrzeby tworzenia dodatkowej funkcji).Algorytm powinien posortowaæ dowolnie du¿¹ tablicê w kolejnoœci niemalej¹cej.
+void G_Task25()
+{
+	printf("Grudzieñ 2.4 - \n");
+	int tab_size = 5;
+	int tab[] = { 5, 8, 6, 2, 7 };
+
+	printf("Oryginal \n");
+	printTable(tab, 5);
+
+
+	printf("DESC \n");
+	SortTable(tab, tab_size, true);
+	printTable(tab, 5);
+
+	printf("ASC \n");
+	SortTable(tab, tab_size, false);
+	printTable(tab, 5);
+}
+
+///Metoda sortuje tablicê
+void SortTable(int *tab, int tab_size, bool sortDESC)
+{
+	if (sortDESC)
+	{
+		for (int i = 0; i < tab_size - 1; i++)
+		{
+			for (int j = 0; j < tab_size - 1; j++)
+			{
+				if (tab[j] < tab[j + 1])
+				{
+					swap(tab[j], tab[j + 1]);
+				}
+			}
+		}
+	}
+	else
+	{
+		for (int i = 0; i < tab_size - 1; i++)
+		{
+			for (int j = 0; j < tab_size - 1; j++)
+			{
+				if (tab[j] > tab[j + 1])
+				{
+					swap(tab[j], tab[j + 1]);
+				}
+			}
+		}
+	}
+
+}
+
+//3.1. Napisaæ metodê int getLength(char *str) , w której W£ASNORECZNIE (nie wolno korzystaæ z metody strlen() ) przeliczony zostanie rozmiar ³añcucha(bez null - terminatora).Dla przyk³adu dla „Hello!" wynik powinien wynosiæ 6.
+void G_Task31()
+{
+	printf("Grudzieñ 3.1 - \n");
+	char tekst[] = "Jakis tam sobie tekst";
+	int lenght = getLength(tekst + '\0');
+	printf("D³ugoœæ tekstu: %d", lenght);
+
+
+}
+
+int getLength(char *text)
+{
+	int count = 0;
+	while (text[count] != '\0')
+	{
+		count++;
+	}
+
+	return count;
+}
+
+//3.2. Napisaæ metodê void Reverse (char *str) , która wypisze ³añcuch znaków od koñca (zakaz u¿ywania strlen, mo¿na uzyæ metodê z zadania 3.1.)
+void G_Task32()
+{
+	printf("Grudzieñ 3.2 - \n");
+	char tekst[] = "Jakis tam sobie tekst";
+	Reverse(tekst);
+
+}
+//Metoda wyœwietla tekst od ty³u
+void Reverse(char *text)
+{
+	int lenght = getLength(text + '\0');
+	for (int i = lenght - 1; i >= 0; i--)
+	{
+		printf("%c", text[i]);
+	}
+}
+
+//3.3. Napisaæ metodê bool containsDigits(char * str), która zwróci informacjê, czy w danym stringu znajduje siê jakakolwiek cyfra.Dla przyk³adu : „asdfgzxcv" -> false, „asdf5asdf" -> true
+void G_Task33()
+{
+	printf("Grudzieñ 3.3 - \n");
+	char tekst[] = "Jakis tam sobie tekst 654";
+	bool isDigit = containDigit(tekst + '\0');
+	printf("Tekst: %s Zawiera cyfrê: %s", tekst, isdigit ? "true" : "false");
+
+	NewLine();
+
+	char tekst2[] = "Jakis tam sobie tekst";
+	bool isDigit2 = containDigit(tekst2 + '\0');
+	printf("Tekst: %s Zawiera cyfrê: %s", tekst2, isDigit2 ? "true" : "false");
+}
+
+//3.4.Pobraæ od u¿ytkownika ³añcuch znaków(dowolna metoda).Przekazaæ go do ka¿dej z metod z 3. czêœci zadañ
+void G_Task34()
+{
+	printf("Grudzieñ 3.4 - \n");
+	char tekst[100];
+	scanf(" %[^\t\n]s", &tekst);
+	int length = getLength(tekst + '\0');
+	printf("D³ugosc: %d", length);
+	NewLine();
+
+	printf("Revers: ");
+	Reverse(tekst);
+
+
+	NewLine();
+
+	bool isDigit = containDigit(tekst);
+	printf("Tekst: %s Zawiera cyfrê: %s", tekst, isDigit ? "true" : "false");
+
+	NewLine();
+
+}
+
+//4.1. Pobraæ od u¿ytkownika liczbê n. Zaalokowaæ pamiêæ na n elementów int i pobraæ je od u¿ytkownika. Wykonaæ na niej metodê printBackwards z 2.2.
+void G_Task41()
+{
+	printf("Grudzieñ 4.1 - \n");
+	int tab_size;
+	printf("WprowadŸ rozmiar tablicy: ");
+	scanf_s("%d", &tab_size);
+
+	int *tab;
+	tab = (int*)malloc(sizeof(int)*tab_size);
+
+	for (int i = 0; i < tab_size; i++)
+	{
+		printf("WprowadŸ element [%d]: ", i);
+		scanf_s("%d", &tab[i]);
+		NewLine();
+	}
+
+	printTable(tab, tab_size, false);
+	free(tab);
+}
+
+//4.2. Pobraæ od u¿ytkownika liczbê n. Zaalokowaæ pamiêæ na n elementów int i pobraæ je od u¿ytkownika. Nastêpnie zaalokowaæ pamiêæ i utworzyæ tablicê, w której bêd¹ tylko UJEMNE wartoœci z pierwszej tablicy.Na koniec zwolniæ pamiêæ na obie tablice.
+void G_Task42()
+{
+	printf("Grudzieñ 4.2 - \n");
+	int tab_size;
+	printf("WprowadŸ rozmiar tablicy: ");
+	scanf_s("%d", &tab_size);
+
+	int *tab;
+	tab = (int*)malloc(sizeof(int)*tab_size);
+
+	int count = 0;
+	for (int i = 0; i < tab_size; i++)
+	{
+		printf("WprowadŸ element [%d]: ", i);
+		scanf_s("%d", &tab[i]);
+		if (tab[i] < 0)
+		{
+			count++;
+		}
+	}
+
+	int *tab2;
+	int tab2Id = 0;
+	tab2 = (int*)malloc(sizeof(int)*count);
+
+	for (int i = 0; i < tab_size; i++)
+	{
+
+		if (tab[i] < 0)
+		{
+			tab2[tab2Id] = tab[i];
+			tab2Id++;
+		}
+	}
+
+	printTable(tab2, count);
+
+	free(tab);
+	free(tab2);
+}
+
+//4.3. Napisaæ metodê bool AreArraysldentical(int * al, int sl, int * a2, int s2) zwracaj¹c¹ informacjê, czy dwie tablice podane jako parametr s¹ identyczne, tj.czy maj¹ tak¹ sam¹ d³ugoœæ i czy na ka¿dym indeksie wystêpuje taki sam element.
+void G_Task43()
+{
+	int tab1_size;
+	int tab2_size;
+	printf("WprowadŸ rozmiar tablicy1: ");
+	scanf_s("%d", &tab1_size);
+	printf("WprowadŸ rozmiar tablicy2: ");
+	scanf_s("%d", &tab2_size);
+
+	int *tab1 = CreateArray(tab1_size);
+	printTable(tab1, tab1_size);
+	int *tab2 = CreateArray(tab2_size);
+	printTable(tab2, tab2_size);
+
+	bool result = AreArraysIdentical(tab1, tab1_size, tab2, tab2_size);
+	printf("Czy tablice s¹ identyczne? %s", result ? "true" : "false");
+
+	free(tab1);
+	free(tab2);
+}
+
+///Metoda generuje tablicê o wskazanym rozmiarze
+int* CreateArray(int tab_size)
+{
+
+
+	int *tab;
+	tab = (int*)malloc(sizeof(int)*tab_size);
+
+	for (int i = 0; i < tab_size; i++)
+	{
+		printf("WprowadŸ element [%d]: ", i);
+		scanf_s("%d", &tab[i]);
+
+	}
+	return tab;
+}
+//Metoda porównuje czy twie tablice s¹ identyczne.
+bool AreArraysIdentical(int *tab1, int tab1_size, int*tab2, int tab2_size)
+{
+	if (tab1_size == tab2_size)
+	{
+		for (int i = 0; i < tab1_size; i++)
+		{
+			if (tab1[i] != tab2[i])
+			{
+				return false;
+			}
+		}
+		return true;
+
+	}
+	else
+	{
+		return false;
+	}
+
+}
+
+
+//4.4. Napisaæ metodê char * reverseString(char*s), która ZWRÓCI (a nie wypisze!) string, który jest odwróconym stringiem przekazanym jako pierwszy parametr.Funkcja zaalokuje pamiêæ na nowy ³añcuch i go zwróci. (ca³y algorytm nale¿y zaimplementowaæ samodzielnie).Nale¿y go nastêpnie „przechwyciæ" w funkcji main, aby pamiêæ na koniec wyczyœciæ
+void G_Task44()
+{
+
+	int text_size;
+	printf("WprowadŸ rozmiar tekstu: ");
+	scanf_s("%d", &text_size);
+	char *text = (char*)malloc(text_size+1);
+
+	/*int i = 0;
+	while (text[i] != '\0')
+	{
+		text[i] = '\0';
+		i++;
+	}*/
+
+	printf("WprowadŸ tekst: ");
+	scanf(" %[^\t\n]s", text + '\0');
+
+	char * text2 = ReverseString(text);
+	printf("ReversText: %s", text2);
+
+	free(text);
+	free(text2);
+
+
+}
+//Metoda odwraca przes³any tekst i go zwraca
+char* ReverseString(char *text)
+{
+	int text_size = getLength(text);
+	char * text2 = (char*)malloc(text_size+1);
+
+	int i = 0;
+	while (text2[i] != '\0')
+	{
+		text2[i] = '\0';
+		i++;
+	}
+
+	for (int i = 0; i < text_size; i++)
+	{
+
+		if (text[i] != '\0')
+		{
+			text2[text_size - 1 - i] = text[i];
+		}
+
+	}
+	text2[text_size + 1] = '\0';
+
+	return text2;
+}
+
+//Metoda zwraca informacjê czy podany tekst zawiera liczbê
+bool containDigit(char *text)
+{
+	int length = getLength(text);
+	for (int i = 0; i < length; i++)
+	{
+		if (text[i] != '\0')
+		{
+			if (isdigit(text[i]))
+			{
+				return true;
+			}
+		}
+
+
+	}
+	return false;
+}
+
+
+///Metoda wyœwietla odowiedni¹ iloœæ kropek w zale¿noœci od iteracji pêtli.
+void PrintDot(int *tab, int tab_size)
+{
+	for (int i = 0; i < tab_size; i++)
+	{
+
+		for (int j = 0; j < i; j++)
+		{
+			printf(".");
+		}
+		printf("\n");
+
+	}
+}
+
+///Metoda zwrace sumê elementów.
+int Sum(int *tab, int tab_size)
+{
+	int suma = 0;
+	for (int i = 0; i < tab_size; i++)
+	{
+
+		suma += tab[i];
+	}
+	return suma;
+}
+
+
+
+
+
+

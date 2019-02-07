@@ -88,6 +88,43 @@ int Sum(int *tab, int tab_size);
 // Grudzieñ
 
 
+#pragma region Styczen
+
+struct Student
+{
+	int Age;
+	int Height;
+	int Semestr;
+};
+
+struct Node
+{
+	int Value;
+	Node * Next;
+};
+
+void S_Task_11();
+void S_Task_12();
+Student* Create(int age, int height, int semestr);
+void PrintStudent(Student* s);
+bool AreEqueal(Student* s1, Student* s2);
+
+void S_Node();
+Node * Node_Create(int value);
+Node * Node_GetTail(Node* root);
+void Node_PrintList(Node* root);
+void Node_Add(Node* root, int value);
+void Node_RemoveNode(Node * root, int value);
+void Node_FreeList(Node * root);
+int Node_Count(Node * root);
+void Node_FillArray(Node * root, int * arr, int arrLenght);
+void SaveTable(int *tab, int tab_size);
+
+void S_Task31();
+
+#pragma region END Styczen
+
+
 int main()
 {
 	setlocale(LC_ALL, "");
@@ -134,8 +171,12 @@ int main()
 	//G_Task41();
 	//G_Task42();
 	//G_Task43();
-	G_Task44();
+	//G_Task44();
 
+	//S_Task_11();
+	//S_Task_12();
+	//S_Node();
+	S_Task31();
 
 	char znak;
 	scanf_s(" %c", &znak);
@@ -1006,13 +1047,13 @@ void G_Task44()
 	int text_size;
 	printf("WprowadŸ rozmiar tekstu: ");
 	scanf_s("%d", &text_size);
-	char *text = (char*)malloc(text_size+1);
+	char *text = (char*)malloc(text_size + 1);
 
 	/*int i = 0;
 	while (text[i] != '\0')
 	{
-		text[i] = '\0';
-		i++;
+	text[i] = '\0';
+	i++;
 	}*/
 
 	printf("WprowadŸ tekst: ");
@@ -1030,7 +1071,7 @@ void G_Task44()
 char* ReverseString(char *text)
 {
 	int text_size = getLength(text);
-	char * text2 = (char*)malloc(text_size+1);
+	char * text2 = (char*)malloc(text_size + 1);
 
 	int i = 0;
 	while (text2[i] != '\0')
@@ -1101,7 +1142,283 @@ int Sum(int *tab, int tab_size)
 }
 
 
+void S_Task_11()
+{
+	Student* s = Create(2, 3, 4);
+	PrintStudent(s);
+	Student* s2 = Create(2, 3, 4);
+	PrintStudent(s2);
+
+	AreEqueal(s, s2);
+
+	free(s);
+	free(s2);
+}
+
+Student* Create(int age, int height, int semestr)
+{
+	Student * s = (Student*)malloc(sizeof(Student));
+	s->Age = age;
+	s->Height = height;
+	s->Semestr = semestr;
+	return s;
+}
+
+void PrintStudent(Student * s)
+{
+	printf("Age: [%d] ", s->Age);
+	printf("Height: [%d] ", s->Height);
+	printf("Semestr: [%d] ", s->Semestr);
+	printf(" \n");
+
+}
+
+bool AreEqueal(Student* s1, Student* s2)
+{
+
+	if (s1->Age == s2->Age && s1->Height == s2->Height && s1->Semestr == s2->Semestr)
+	{
+		printf("Student s1 == Students2");
+		return true;
+	}
+	return false;
+
+}
+
+
+void S_Task_12()
+{
+	int size = 3;
+	Student *stdArray = (Student *)malloc(size*sizeof(Student));
+	//stdArray[0] = Create(2, 3, 4);
+	stdArray[0].Age = 2;
+	stdArray[0].Height = 4;
+	stdArray[0].Semestr = 5;
+
+	stdArray[1].Age = 3;
+	stdArray[1].Height = 5;
+	stdArray[1].Semestr = 6;
+
+
+	stdArray[2].Age = 4;
+	stdArray[2].Height = 6;
+	stdArray[2].Semestr = 8;
 
 
 
+	printf("std[1].Age [%d] \n", stdArray[1].Age);
 
+	free(stdArray);
+
+	//printf("std[1].Age [%d] \n", stdArray[1].Age);
+
+}
+
+//
+void S_Node()
+{
+	Node * root = Node_Create(2);
+	Node_PrintList(root);
+	Node_Add(root, 4);
+	Node_Add(root, 8);
+	Node_Add(root, 16);
+	Node_PrintList(root);
+
+	Node_Add(root, 20);
+	Node_PrintList(root);
+
+	printf("Ostatni wêze³ Value: %d \n", Node_GetTail(root)->Value);
+
+	Node_Add(root, 16);
+	Node_PrintList(root);
+
+
+	printf("Iloœæ: %d \n", Node_Count(root));
+
+	Node_RemoveNode(root, 8);
+
+	printf("Iloœæ: %d \n", Node_Count(root));
+	printf("\n\n");
+	Node_PrintList(root);
+	Node_RemoveNode(root, 10);
+	Node_PrintList(root);
+
+	Node_RemoveNode(root, 16);
+	Node_PrintList(root);
+
+	Node_FreeList(root);
+
+	//Node_PrintList(root);
+
+
+
+}
+Node * Node_Create(int value)
+{
+	Node * List = (Node*)malloc(sizeof(Node));
+	List->Next = List;
+	List->Value = value;
+	return List;
+
+}
+
+void Node_PrintList(Node * root)
+{
+	Node * List = root;
+	while (List->Next != root)
+	{
+		printf("Value %d \n", List->Value);
+		List = List->Next;
+	}
+	printf("Value %d \n", List->Value);
+
+}
+
+void Node_FillArray(Node * root, int * arr, int arrLenght)
+{
+	Node * List = root;
+	int i = 0;
+	while (List->Next != root)
+	{
+		
+		arr[i] = List->Value;
+		i++;
+		List = List->Next;
+	}
+	arr[i] = List->Value;
+	
+	
+
+}
+
+Node* Node_GetTail(Node* root)
+{
+	Node *List = root;
+	while (List->Next != root)
+	{
+
+		List = List->Next;
+	}
+	return List;
+
+}
+void Node_Add(Node* root, int value)
+{
+	Node * Tail = Node_GetTail(root);
+	Tail->Next = (Node*)malloc(sizeof(Node));
+	Node * NewNode = (Node*)malloc(sizeof(Node));
+	NewNode->Next = root;
+	NewNode->Value = value;
+
+	Tail->Next = NewNode;
+}
+
+int Node_Count(Node * root)
+{
+	Node *List = root;
+	int Count = 1;
+	while (List->Next != root)
+	{
+		Count++;
+		List = List->Next;
+	}
+	return Count;
+
+}
+
+void Node_RemoveNode(Node * root, int value)
+{
+	Node * List = root;
+
+	while (List->Next != root)
+	{
+		if (List->Next->Value == value)
+		{
+			Node * Temp = List->Next;
+			List->Next = Temp->Next;
+
+		}
+
+		List = List->Next;
+
+	}
+
+
+}
+
+
+void Node_FreeList(Node * root)
+{
+	Node * List = root->Next;
+
+	while (List != root)
+	{
+		Node * Temp = List;
+		printf("FreeNode %d \n", Temp->Value);
+		List = List->Next;
+		free(Temp);
+	}
+	printf("FreeNode %d \n", root->Value);
+
+	free(root);
+}
+
+
+void S_Task31()
+{
+	int liczba;
+	FILE * fileSave = fopen("numbers.txt","w");
+	do
+	{
+		printf("Podaj liczbê: ");
+		scanf_s("%d", &liczba);
+		if (liczba != 0)
+		{
+			//fprintf(file,"%d",liczba);
+			fprintf(fileSave, "%d \n", liczba);
+			
+		}
+	} while (liczba != 0);
+	fclose(fileSave);
+	printf("Zapisane \n");
+
+	printf("Wczytanie \n");
+
+
+	
+	FILE * fileLoad = fopen("numbers.txt", "r");
+	int output = 0;
+	fscanf(fileLoad, "%d ", &output);
+	Node * root = Node_Create(output);
+	while (fscanf(fileLoad, "%d ", &output) != EOF)
+	{
+		Node_Add(root, output);
+	}
+	Node_PrintList(root);
+
+	int CountElements = Node_Count(root);
+
+	int *tab;
+	tab = (int*)malloc(sizeof(int)*CountElements);
+	Node_FillArray(root,tab,CountElements);
+
+	printTable(tab, CountElements);
+
+	SortTable(tab,CountElements,true);
+	printTable(tab, CountElements);
+	SaveTable(tab, CountElements);
+
+	free(tab);
+	Node_FreeList(root);
+}
+
+void SaveTable(int *tab, int tab_size)
+{
+	FILE * fileSave = fopen("sorted.txt","w");
+	for (int j = 0; j < tab_size ; j++)
+	{
+		int i = tab[j];
+		fprintf(fileSave,"%d \n",tab[j]);
+	}
+	fclose(fileSave);
+}

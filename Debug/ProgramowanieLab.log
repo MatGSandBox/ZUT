@@ -1,4 +1,4 @@
 ﻿  ProgramowanieLab.cpp
-d:\studia\programowanielab\programowanielab\programowanielab.cpp(149): warning C4305: 'initializing' : truncation from 'double' to 'float'
-d:\studia\programowanielab\programowanielab\programowanielab.cpp(845): warning C4551: function call missing argument list
+d:\studia\programowanielab\programowanielab\programowanielab.cpp(190): warning C4305: 'initializing' : truncation from 'double' to 'float'
+d:\studia\programowanielab\programowanielab\programowanielab.cpp(886): warning C4551: function call missing argument list
   ProgramowanieLab.vcxproj -> D:\Studia\ProgramowanieLab\Debug\ProgramowanieLab.exe
